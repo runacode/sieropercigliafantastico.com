@@ -9,8 +9,8 @@
   "upsell3ID": 63,
   "products": [
     {
-      "cid": 4,
-      "cid_free": 5,
+      "cid": 59,
+      "cid_free": 60,
       "img": "/resources/images/main-banner.jpg",
       "imgsafe": "/resources/images/smain-big.jpg",
       "img_small": "/resources/images/smain-small.jpg",
