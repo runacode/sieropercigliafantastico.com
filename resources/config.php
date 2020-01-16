@@ -424,7 +424,7 @@ KFormConfig::$campaignData = '{
             "productId": 63,
             "name": "Silicone Make-Up Sponge",
             "description": "*No description available",
-            "imagePath": "https:\/\/www.sieropercigliafantastico.com\/resources\/images\/upsell3.jpg",
+            "imagePath": "https:\/\/www.sieropercigliafantastico.com\/resources\/images\/upsell3-it.jpg",
             "imageId": 3,
             "price": "4.95",
             "shipPrice": "0.00",
