@@ -1,8 +1,8 @@
 <?php
 
 include 'includes/data.php';
-$nostatecheckout = ['DE', 'FR', 'UK'];
-if (in_array(strtoupper($data->country_1), $nostatecheckout)) {
+
+if ($data->IsNoStateCheckOut) {
     require_once(dirname(__FILE__) . "/checkout-no-state.php");
     die();
 
@@ -269,7 +269,24 @@ $ksdk = new KonnektiveSDK($pageType, $deviceType);
     <br><br>
 </div>
 <div style="clear:both; padding-bottom: 20px;"></div>
+<?php if(isset($data->Lo_Site_Id)) {
+    ?>
+    }
+    <script type='text/javascript'>
+        window.__lo_site_id = <?php echo $data->Lo_Site_Id; ?>;
 
+            (function () {
+                var wa = document.createElement('script');
+                wa.type = 'text/javascript';
+                wa.async = true;
+                wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wa, s);
+            })();
+    </script>
+    <?php
+}
+?>
 </body>
 </html>
 
