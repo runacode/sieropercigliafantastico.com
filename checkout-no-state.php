@@ -186,7 +186,8 @@ $ksdk = new KonnektiveSDK($pageType, $deviceType);
             <input type="hidden" name='paySource' value="CREDITCARD">
             <div class='kform_spacer'>
                 <h3><?= T('Credit Card'); ?></h3>
-                <div class="text-center"><img class="img-fluid" src="resources/images/sponsors-02.jpg"</div>
+                <div class="text-center"><a href="javascript:$('#kform_payPalButton').click()"> <img class="img-fluid"
+                                                                            src="resources/images/sponsors-02.jpg"></a>
                 <div style='display:none'>
                     <div id='kformPaySourceWrap' inputType='radio'></div>
                     <div class='kform_spacer' id='kformNewPaymentType'>
@@ -265,7 +266,6 @@ $ksdk = new KonnektiveSDK($pageType, $deviceType);
 </div>
 <?php if(isset($data->Lo_Site_Id)) {
     ?>
-    }
     <script type='text/javascript'>
         window.__lo_site_id = <?php echo $data->Lo_Site_Id; ?>;
 
