@@ -32,7 +32,7 @@ $ksdk = new KonnektiveSDK($pageType, $deviceType);
     $ksdk->echoJavascript();
     ?>
     <link rel="stylesheet" type="text/css" href="resources/css/fonts/fonts.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/shopify.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/shopify.css?<?php echo rand(0, 10); ?>">
     <link rel="stylesheet" type="text/css" href="resources/css/stamped-reviews.css">
     <link rel="stylesheet" type="text/css"
           href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -191,7 +191,9 @@ $ksdk = new KonnektiveSDK($pageType, $deviceType);
             <input type="hidden" name='paySource' value="CREDITCARD">
             <div class='kform_spacer'>
                 <h3><?= T('Credit Card'); ?></h3>
-                <div class="text-center"><img class="img-fluid" src="resources/images/sponsors-02.jpg"</div>
+                <div class="text-center"><a href="javascript:$('#kform_payPalButton').click()"> <img class="img-fluid"
+                                                                            src="resources/images/sponsors-02.jpg"></a>
+                </div>
                 <div style='display:none'>
                     <div id='kformPaySourceWrap' inputType='radio'></div>
                     <div class='kform_spacer' id='kformNewPaymentType'>
@@ -269,20 +271,19 @@ $ksdk = new KonnektiveSDK($pageType, $deviceType);
     <br><br>
 </div>
 <div style="clear:both; padding-bottom: 20px;"></div>
-<?php if(isset($data->Lo_Site_Id)) {
+<?php if (isset($data->Lo_Site_Id)) {
     ?>
-    }
     <script type='text/javascript'>
         window.__lo_site_id = <?php echo $data->Lo_Site_Id; ?>;
 
-            (function () {
-                var wa = document.createElement('script');
-                wa.type = 'text/javascript';
-                wa.async = true;
-                wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(wa, s);
-            })();
+        (function () {
+            var wa = document.createElement('script');
+            wa.type = 'text/javascript';
+            wa.async = true;
+            wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wa, s);
+        })();
     </script>
     <?php
 }
