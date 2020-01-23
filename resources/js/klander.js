@@ -945,10 +945,10 @@ var klander = function()
 		var states = this.states[countryCode];
 		var hasStates = typeof states == 'undefined' || states.length == 0 ? false : true;
 		if(!hasStates){
-			input.innerHTML = '<option value=" ">Select State</option>';
+			input.innerHTML = '<option value=" ">' + kvalidate_config.placeHolders.selectState + '</option>';
 			input.style.display = 'none';
 		}else{
-			input.innerHTML = '<option value="">Select State</option>';
+			input.innerHTML = '<option value="">' + kvalidate_config.placeHolders.selectState + '</option>';
 			input.style.display = 'inline-block';
 			for(var code in states){
 				var opt = document.createElement('option');
