@@ -1,6 +1,7 @@
 <?php
 include_once('pixelconstants.php');
 $FaceCon = json_decode( file_get_contents(sprintf("%s/../includes/config/Facebook.json", dirname(__FILE__))));
+
 //pixel code
 function extract_subdomains($domain)
 {
@@ -41,26 +42,41 @@ if(isset($qs)) {
 
     }
 }
+if(isset($FaceCon->pixel_id) && strlen($FaceCon->pixel_id )>0 || strcmp($FaceCon->pixel_id, "1212") !==0) {
 
+    ?>
+    <script>
+
+
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+
+        fbq('init', <?= $FaceCon->pixel_id; ?>);
+        fbq('track', '<?php echo $Event; ?>'<?php echo $Value; ?>);
+
+
+    </script>
+
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=<?= $FaceCon->pixel_id; ?>&ev=<?php echo $Event; ?><?php echo $PixelValue; ?>&noscript=1"
+        /></noscript>
+    <?php
+
+}
 ?>
-<script>
-
-
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', <?= $FaceCon->pixel_id; ?>);
-    fbq('track','<?php echo $Event; ?>'<?php echo $Value; ?>);
-
-
-</script>
-
-<noscript><img height="1" width="1" style="display:none"
-               src="https://www.facebook.com/tr?id=<?= $FaceCon->pixel_id; ?>&ev=<?php echo $Event; ?><?php echo $PixelValue; ?>&noscript=1"
-    /></noscript>
